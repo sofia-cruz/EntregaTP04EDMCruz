@@ -24,47 +24,46 @@ public class ClienteController {
 	@Autowired
 	@Qualifier("unImp")
 	IClienteService clienteService;
-	
-	//@Autowired
-	//@Qualifier ("OtraImp")
-	//IClienteService otroclienteService;
+
+	// @Autowired
+	// @Qualifier ("OtraImp")
+	// IClienteService otroclienteService;
 
 	@GetMapping("/cliente/mostrar")
 	public String cargarCliente(Model model) {
 		model.addAttribute("unCliente", clienteService.crearCliente());
 		model.addAttribute("clientes", clienteService.obtenerTodosClientes());
-		return("cliente");
+		return ("cliente");
 	}
 
 	@PostMapping("/cliente/guardar")
 	public String guardarNuevoCliente(@ModelAttribute("unCliente") Cliente nuevoCliente, Model model) {
 		LOGGER.info("METHOD: ingresando el metodo Guardar");
-		clienteService.guardarCliente(nuevoCliente);		
-		LOGGER.info("Tamaño del Listado: "+ clienteService.obtenerTodosClientes().size());
+		clienteService.guardarCliente(nuevoCliente);
+		LOGGER.info("Tamaño del Listado: " + clienteService.obtenerTodosClientes().size());
 		trabajarConFechas();
 		return "redirect:/cliente/mostrar";
 	}
-	
+
 	public void trabajarConFechas() {
-		//algunas cosas con fecha;
-		//obtengo tres fechas
+		// algunas cosas con fecha;
+		// obtengo tres fechas
 		LocalDate fecha1 = clienteService.obtenerTodosClientes().get(0).getFechaNacimiento();
 		LocalDate fecha2 = LocalDate.now();
 		LocalDate fecha3 = LocalDate.of(2020, 3, 25);
-		
-		//calculo el período entre dos de ellas
-		Period periodo = Period.between(fecha1,fecha2);
-		Period otroPeriodo = Period.between(fecha1,fecha3);
-		
-		//una vez que tengo el período puedo saber sus cantidades en días meses y años
-		int dias = periodo.getDays();		
-		System.out.println("dias: "+dias);
-		dias = otroPeriodo.getDays();		
-		System.out.println("dias: "+dias);
-		
-		
-		
-		//revisen la salida en la consola, debería dar la diferencia en días
-		//todo esto nos debe hacer revisar la documentación de las clases LocalDate, LocalTime, LocalDateTime y Period
+
+		// calculo el período entre dos de ellas
+		Period periodo = Period.between(fecha1, fecha2);
+		Period otroPeriodo = Period.between(fecha1, fecha3);
+
+		// una vez que tengo el período puedo saber sus cantidades en días meses y años
+		int dias = periodo.getDays();
+		System.out.println("dias: " + dias);
+		dias = otroPeriodo.getDays();
+		System.out.println("dias: " + dias);
+
+		// revisen la salida en la consola, debería dar la diferencia en días
+		// todo esto nos debe hacer revisar la documentación de las clases LocalDate,
+		// LocalTime, LocalDateTime y Period
 	}
 }

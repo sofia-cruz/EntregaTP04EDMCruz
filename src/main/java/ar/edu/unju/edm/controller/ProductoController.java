@@ -12,14 +12,14 @@ import ar.edu.unju.edm.service.IProductoService;
 
 @Controller
 public class ProductoController {
-	
+
 	@Autowired
 	IProductoService iProductoService;
-	
+
 	@GetMapping("/producto")
 	public String cragarProducto(Model model) {
 		model.addAttribute("unProducto", iProductoService.obtenerProductoNuevo());
-		return("producto");
+		return ("producto");
 	}
 
 	@PostMapping("/producto")
@@ -27,20 +27,20 @@ public class ProductoController {
 		iProductoService.guardarProducto(nuevoProducto);
 		System.out.println(iProductoService.obtenerTodosProductos().get(0).getMarca());
 		model.addAttribute("productos", iProductoService.obtenerTodosProductos());
-		
-		return "resultado"; 
+
+		return "resultado";
 	}
-	
+
 	@GetMapping("/ultimo")
 	public String cargarUltimoProducto(Model model) {
 		model.addAttribute("ultimoProducto", iProductoService.obtenerUltimoProducto());
-		return("mostrar-ultimo");
+		return ("mostrar-ultimo");
 	}
 
 	@GetMapping("/volver")
 	public String cargarNuevoProducto(Model model) {
-		//model.addAttribute("unProducto", iProductoService.obtenerProductoNuevo());
-		return("redirect:/producto");
+		// model.addAttribute("unProducto", iProductoService.obtenerProductoNuevo());
+		return ("redirect:/producto");
 	}
-	
+
 }

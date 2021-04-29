@@ -14,7 +14,7 @@ import ar.edu.unju.edm.util.ListadoClientes;
 
 @Service
 @Qualifier("unImp")
-public class ClienteServiceImp implements IClienteService{
+public class ClienteServiceImp implements IClienteService {
 
 	private List<Cliente> listadoClientes = ListadoClientes.clientes;
 
@@ -24,11 +24,11 @@ public class ClienteServiceImp implements IClienteService{
 	@Override
 	public void guardarCliente(Cliente unCliente) {
 		// TODO Auto-generated method stub
-		LocalDate fechaNac=unCliente.getFechaNacimiento();
+		LocalDate fechaNac = unCliente.getFechaNacimiento();
 		LocalDate fechaHoy = LocalDate.now();
 		Period periodo = Period.between(fechaNac, fechaHoy);
 		unCliente.setEdad(periodo.getYears());
-		
+
 		listadoClientes.add(unCliente);
 	}
 

@@ -23,7 +23,6 @@ public class Cliente {
 	private String nombreApellido;
 	private String password;
 	private String datosAdicionales;
-	
 
 	public Cliente() {
 		// TODO Auto-generated constructor stub
@@ -116,25 +115,25 @@ public class Cliente {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 	public String getTiempoDesdeUltimaCompra() {
 		LocalDate fechaActual = LocalDate.now();
 		Period periodo = Period.between(fechaUltimaCompra, fechaActual);
-		return " T Desde Ultima Compra:  Año: " + periodo.getYears() + " Mes: " + periodo.getMonths() + " Dia: " + periodo.getDays();
+		return " T Desde Ultima Compra:  Año: " + periodo.getYears() + " Mes: " + periodo.getMonths() + " Dia: "
+				+ periodo.getDays();
 	}
-	
 
 	public String getTiempoProxCumple() {
-		LocalDate fechaActual= LocalDate.now();
-        LocalDate fechaCumple= getFechaNacimiento();
+		LocalDate fechaActual = LocalDate.now();
+		LocalDate fechaCumple = getFechaNacimiento();
 
-        LocalDate proxCumple = fechaCumple.withYear(fechaActual.getYear());
+		LocalDate proxCumple = fechaCumple.withYear(fechaActual.getYear());
 
-        if (proxCumple.isBefore(fechaActual) || proxCumple.isEqual(fechaActual)) {
-        	proxCumple = proxCumple.plusYears(1);
-        }
+		if (proxCumple.isBefore(fechaActual) || proxCumple.isEqual(fechaActual)) {
+			proxCumple = proxCumple.plusYears(1);
+		}
 
-        Period periodo = Period.between(fechaActual, proxCumple);
-        return "T Hasta Prox Cumpleaños: " + " Mes: " + periodo.getMonths() + " Dia: " + periodo.getDays();
+		Period periodo = Period.between(fechaActual, proxCumple);
+		return "T Hasta Prox Cumpleaños: " + " Mes: " + periodo.getMonths() + " Dia: " + periodo.getDays();
 	}
 }

@@ -10,7 +10,7 @@ import ar.edu.unju.edm.service.IClienteService;
 
 @Service
 @Qualifier("otroImp")
-public class OtroImp implements IClienteService{
+public class OtroImp implements IClienteService {
 
 	@Override
 	public void guardarCliente(Cliente unCliente) {

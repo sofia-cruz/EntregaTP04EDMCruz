@@ -1,5 +1,20 @@
+body {
+	background-image: url("");
+}
+
+.tituloform{
+	background:rgb(91, 173, 255);	
+	padding: 8px 16px 8px 16px;
+	text-align: center;
+}
+
+.titulotabla{	
+	padding: 8px 16px 8px 16px;
+	text-align: center;
+}
+
 .navmio{
-	background:#bdf38b;	
+	background:rgb(164, 209, 255);	
 	padding: 8px 16px 8px 16px;
 	text-align: center;
 }

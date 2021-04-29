@@ -1,6 +1,6 @@
 package ar.edu.unju.edm.service.imp;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -9,16 +9,19 @@ import org.springframework.stereotype.Service;
 
 import ar.edu.unju.edm.model.Producto;
 import ar.edu.unju.edm.service.IProductoService;
+import ar.edu.unju.edm.util.ListadoProductos;
 
 @Service
-public class ProductoServiceImp implements IProductoService{
-	
+public class ProductoServiceImp implements IProductoService {
+
 	private static final Log LOGGER = LogFactory.getLog(ProductoServiceImp.class);
-	
+
 	@Autowired
 	Producto unProducto;
 
-	ArrayList<Producto> listaDeProductos = new ArrayList<Producto>();
+	// ArrayList<Producto> listaDeProductos = new ArrayList<Producto>();
+
+	private List<Producto> listaDeProductos = ListadoProductos.productos;
 
 	@Override
 	public void guardarProducto(Producto unProducto) {
@@ -26,21 +29,21 @@ public class ProductoServiceImp implements IProductoService{
 		System.out.println(unProducto.getNombre());
 		listaDeProductos.add(unProducto);
 		System.out.println(listaDeProductos.size());
-		
+
 		LOGGER.info("METHOD: ingresando a Guardar Producto");
-		LOGGER.info("RESULT: guardado " + listaDeProductos.get(listaDeProductos.size()-1).getNombre());
+		LOGGER.info("RESULT: guardado " + listaDeProductos.get(listaDeProductos.size() - 1).getNombre());
 	}
 
 	@Override
 	public void modificarProducto(Producto productoAModificar) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void eliminarProducto(Producto productoAEliminar) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -56,7 +59,7 @@ public class ProductoServiceImp implements IProductoService{
 	}
 
 	@Override
-	public ArrayList<Producto> obtenerTodosProductos() {
+	public List<Producto> obtenerTodosProductos() {
 		// TODO Auto-generated method stub
 		return listaDeProductos;
 	}
@@ -67,5 +70,5 @@ public class ProductoServiceImp implements IProductoService{
 		int i = listaDeProductos.size() - 1;
 		return listaDeProductos.get(i);
 	}
-	
+
 }
