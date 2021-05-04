@@ -1,20 +1,36 @@
 body {
-	background-image: url("");
+	margin: 0;
+	padding: 0;
+	background: url(../img/website-background-imac-blue.jpg);
+	background-position: center center;
+	background-attachment: fixed;
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 100vh;
 }
 
-.tituloform{
-	background:rgb(91, 173, 255);	
+.loginform {
+	
+	width: 320px;
+	height: 400px;
+	top: 50%;
+	left: 50%;
+	padding: 80px 30px;
+}
+
+.tituloform {
+	background: rgb(91, 173, 255);
 	padding: 8px 16px 8px 16px;
 	text-align: center;
 }
 
-.titulotabla{	
+.titulotabla {
 	padding: 8px 16px 8px 16px;
 	text-align: center;
 }
 
-.navmio{
-	background:rgb(164, 209, 255);	
+.navmio {
+	background: rgb(164, 209, 255);
 	padding: 8px 16px 8px 16px;
 	text-align: center;
 }

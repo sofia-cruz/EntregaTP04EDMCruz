@@ -19,6 +19,7 @@ public class ProductoController {
 	@GetMapping("/producto")
 	public String cragarProducto(Model model) {
 		model.addAttribute("unProducto", iProductoService.obtenerProductoNuevo());
+		model.addAttribute("productos", iProductoService.obtenerTodosProductos());
 		return ("producto");
 	}
 
@@ -28,19 +29,7 @@ public class ProductoController {
 		System.out.println(iProductoService.obtenerTodosProductos().get(0).getMarca());
 		model.addAttribute("productos", iProductoService.obtenerTodosProductos());
 
-		return "resultado";
-	}
-
-	@GetMapping("/ultimo")
-	public String cargarUltimoProducto(Model model) {
-		model.addAttribute("ultimoProducto", iProductoService.obtenerUltimoProducto());
-		return ("mostrar-ultimo");
-	}
-
-	@GetMapping("/volver")
-	public String cargarNuevoProducto(Model model) {
-		// model.addAttribute("unProducto", iProductoService.obtenerProductoNuevo());
-		return ("redirect:/producto");
+		return "redirect:/producto";
 	}
 
 }
