@@ -44,4 +44,29 @@ public class ClienteServiceImp implements IClienteService {
 		return listadoClientes;
 	}
 
+	@Override
+	public Cliente encontrarUnCliente(int dni) {
+		// TODO Auto-generated method stub
+		for (int i=0; i < listadoClientes.size();i++)
+		{
+			if(listadoClientes.get(i).getNroDocumento() == dni)
+			{
+				unCliente = listadoClientes.get(i);
+	    	}
+		}
+		return unCliente;
+	}
+
+
+	public void modificarCliente(Cliente clienteModificado) {
+		for (int i=0; i< listadoClientes.size();i++)
+		{
+			if(listadoClientes.get(i).getNroDocumento() == clienteModificado.getNroDocumento())
+			{
+				listadoClientes.set(i, clienteModificado);
+			}
+
+		}	
+	}
+
 }

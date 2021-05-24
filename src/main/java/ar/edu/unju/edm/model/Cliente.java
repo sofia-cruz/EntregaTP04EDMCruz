@@ -3,25 +3,47 @@ package ar.edu.unju.edm.model;
 import java.time.LocalDate;
 import java.time.Period;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
+@Entity
+@Table (name="CLIENTES")
 @Component
 public class Cliente {
+	@Id
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
+	@Column
 	private int nroDocumento;
 
+	@Column
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fechaNacimiento;
+	@Column
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fechaUltimaCompra;
-
+	
+	@Column
 	private String tipoDocumento;
+	@Column
 	private int codigoAreaTelefono;
+	@Column
 	private int numTelefono;
+	@Column
 	private int edad;
+	@Column
 	private String email;
+	@Column
 	private String nombreApellido;
+	@Column
 	private String password;
+	@Column
 	private String datosAdicionales;
 
 	public Cliente() {
