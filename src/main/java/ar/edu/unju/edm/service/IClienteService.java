@@ -14,7 +14,7 @@ public interface IClienteService {
 
 	public List<Cliente> obtenerTodosClientes();
 
-	public Cliente encontrarUnCliente(int dni);
+	public Cliente encontrarUnCliente(int dni) throws Exception;
 
 	public void modificarCliente(Cliente clienteModificado) throws Exception;
 
