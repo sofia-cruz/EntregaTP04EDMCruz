@@ -22,13 +22,11 @@
 		</div>
 		<br>
 		<form id="formProducto" th:object="${unProducto}"
-			th:action="${producto}" method="post">
-
+			th:action="${editMode}?@{/producto/modificar}:@{/producto/guardar}" method="post">
 			<div class="form-group row">
 				<label for="codigo" class="col-sm-2 col-form-label">Código</label>
-				<div class=" col-sm-10">
-					<input type="number" id="codigo" th:field="*{codProducto}"
-						class="form-control">
+				<div class="col-sm-10">
+					<input type="text" id="codigo" th:field="*{codProducto}" class="form-control">
 				</div>
 			</div>
 
@@ -73,8 +71,10 @@
 			</div>
 
 			<div>
-				<button type="submit" value="Agregar"
-					class="btn btn-primary btn-lg btn-block">Agregar</button>
+				<!-- <button type="submit" value="Agregar" 
+					class="btn btn-primary btn-lg btn-block">Agregar</button> -->
+				<input type="submit" class="btn btn-primary btn-block"
+					th:value="${editMode}?'Modificar Producto':'Crear Producto'">
 			</div>
 
 		</form>
@@ -93,6 +93,7 @@
 						<th>Marca</th>
 						<th>Stock</th>
 						<th>Descripción</th>
+						<th>Edición</th>
 					</tr>
 				</thead>
 				<tr th:if="${productos.empty}">
@@ -105,6 +106,7 @@
 					<td th:text="${producto.marca}"></td>
 					<td th:text="${producto.stock}"></td>
 					<td th:text="${producto.descripcion}"></td>
+					<td><a href="#" th:href="@{'/producto/editar/'+${producto.codProducto}}"><i class="fa fa-edit"></i></a></td>
 				</tr>
 			</table>
 		</div>

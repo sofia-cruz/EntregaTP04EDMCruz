@@ -11,9 +11,7 @@ public interface IProductoService {
 
 	public void guardarProducto(Producto unProducto);
 
-	public void modificarProducto(Producto productoAModificar);
-
-	public void eliminarProducto(Producto productoAEliminar);
+	public void modificarProducto(Producto productoAModificar) throws Exception;
 
 	public Producto obtenerUnProducto(String nombreProducto);
 
@@ -22,5 +20,9 @@ public interface IProductoService {
 	public Producto obtenerProductoNuevo();
 
 	public Object obtenerUltimoProducto();
+
+	public Producto encontrarUnProducto(int cod) throws Exception;
+
+	public Object crearProducto();
 
 }

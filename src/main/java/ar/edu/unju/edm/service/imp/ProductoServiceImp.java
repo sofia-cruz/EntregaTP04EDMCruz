@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unju.edm.model.Producto;
@@ -12,6 +13,7 @@ import ar.edu.unju.edm.service.IProductoService;
 import ar.edu.unju.edm.util.ListadoProductos;
 
 @Service
+@Qualifier("impproducto")
 public class ProductoServiceImp implements IProductoService {
 
 	private static final Log LOGGER = LogFactory.getLog(ProductoServiceImp.class);
@@ -35,20 +37,19 @@ public class ProductoServiceImp implements IProductoService {
 	}
 
 	@Override
-	public void modificarProducto(Producto productoAModificar) {
+	public void modificarProducto(Producto productoModificado) {
 		// TODO Auto-generated method stub
-
+		for (int i=0; i< listaDeProductos.size();i++)
+		{
+			if(listaDeProductos.get(i).getCodProducto() == productoModificado.getCodProducto())
+			{
+				listaDeProductos.set(i, productoModificado);
+			}
+		}
 	}
 
 	@Override
-	public void eliminarProducto(Producto productoAEliminar) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public Producto obtenerUnProducto(String nombreProducto) {
-		// TODO Auto-generated method stub
+	public Producto obtenerUnProducto(String nombreProducto) {	
 		return null;
 	}
 
@@ -69,6 +70,25 @@ public class ProductoServiceImp implements IProductoService {
 		// TODO Auto-generated method stub
 		int i = listaDeProductos.size() - 1;
 		return listaDeProductos.get(i);
+	}
+
+	@Override
+	public Producto encontrarUnProducto(int cod) {
+		// TODO Auto-generated method stub
+		for (int i=0; i < listaDeProductos.size();i++)
+		{
+			if(listaDeProductos.get(i).getCodProducto() == cod)
+			{
+				unProducto = listaDeProductos.get(i);
+	    	}
+		}
+		return unProducto;
+	}
+
+	@Override
+	public Object crearProducto() {
+		// TODO Auto-generated method stub
+		return unProducto;
 	}
 
 }
