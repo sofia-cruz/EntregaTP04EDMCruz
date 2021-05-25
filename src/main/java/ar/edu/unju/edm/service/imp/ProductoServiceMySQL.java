@@ -14,12 +14,12 @@ public class ProductoServiceMySQL implements IProductoService{
 	Producto unProducto;
 	
 	@Autowired
-	IProductoDAO iProductoDAO;
+	IProductoDAO productoDAO;
 	
 	@Override
 	public void guardarProducto(Producto productoGuardado) {
 		// TODO Auto-generated method stub
-		iProductoDAO.save(productoGuardado);
+		productoDAO.save(productoGuardado);
 	}
 	@Override
 	public Producto obtenerUnProducto(String nombreProducto) {
@@ -29,7 +29,7 @@ public class ProductoServiceMySQL implements IProductoService{
 	@Override
 	public ArrayList<Producto> obtenerTodosProductos() {
 		// TODO Auto-generated method stub
-		return (ArrayList<Producto>) iProductoDAO.findAll();
+		return (ArrayList<Producto>) productoDAO.findAll();
 	}
 	@Override
 	public Producto obtenerProductoNuevo() {
@@ -44,7 +44,7 @@ public class ProductoServiceMySQL implements IProductoService{
 
 	@Override
 	public Producto encontrarUnProducto(int cod) throws Exception {
-		return iProductoDAO.findByCodProducto(cod).orElseThrow(()->new Exception("El producto NO existe"));
+		return productoDAO.findByCodProducto(cod).orElseThrow(()->new Exception("El producto NO existe"));
 	}
 	
 	@Override
@@ -56,9 +56,9 @@ public class ProductoServiceMySQL implements IProductoService{
 	@Override
 	public void modificarProducto(Producto productoModificado) throws Exception {
 		// TODO Auto-generated method stub
-				Producto productoAModificar = iProductoDAO.findByCodProducto(productoModificado.getCodProducto()).orElseThrow(()->new Exception("El Producto no fue encontrado"));
+				Producto productoAModificar = productoDAO.findByCodProducto(productoModificado.getCodProducto()).orElseThrow(()->new Exception("El Producto no fue encontrado"));
 				cambiarProducto(productoModificado, productoAModificar);
-				iProductoDAO.save(productoAModificar);
+				productoDAO.save(productoAModificar);
 			}
 	
 	private void cambiarProducto(Producto productoModificado, Producto productoAModificar) {
@@ -69,6 +69,13 @@ public class ProductoServiceMySQL implements IProductoService{
 		productoAModificar.setPrecio(productoModificado.getPrecio());
 		productoAModificar.setStock(productoModificado.getStock());
 		productoAModificar.setDescripcion(productoModificado.getDescripcion());
+	}
+	
+	@Override
+	public void eliminarProducto(int cod) throws Exception {
+		// TODO Auto-generated method stub
+		Producto productoEliminar = productoDAO.findByCodProducto(cod).orElseThrow(()->new Exception("El Producto no fue encontrado"));
+		productoDAO.delete(productoEliminar);
 	}
 
 }

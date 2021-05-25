@@ -41,6 +41,17 @@ public class ProductoController {
 		model.addAttribute("productos", productoService.obtenerTodosProductos());
 		return("producto");
 	}
+	
+	@GetMapping("/producto/eliminarProducto/{codProducto}")
+	public String eliminarProducto(Model model, @PathVariable(name="codProducto") int cod) {
+		try {
+			productoService.eliminarProducto(cod);			
+		}
+		catch(Exception e){
+			model.addAttribute("listErrorMessage",e.getMessage());
+		}			
+		return "redirect:/producto";
+	}
 
 	@PostMapping("/producto/guardar")
 	public String guardarNuevoProducto(@ModelAttribute("unProducto") Producto nuevoProducto, Model model) {

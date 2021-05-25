@@ -25,4 +25,6 @@ public interface IProductoService {
 
 	public Object crearProducto();
 
+	public void eliminarProducto(int cod) throws Exception;
+
 }

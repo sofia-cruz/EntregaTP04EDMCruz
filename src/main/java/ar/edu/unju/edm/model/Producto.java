@@ -16,8 +16,19 @@ public class Producto {
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	@Column
+	private Integer idProducto;
+	
+	@Column
 	private int codProducto;
 	
+	public Integer getIdProducto() {
+		return idProducto;
+	}
+
+	public void setIdProducto(Integer idProducto) {
+		this.idProducto = idProducto;
+	}
+
 	@Column
 	private String nombre;
 	@Column

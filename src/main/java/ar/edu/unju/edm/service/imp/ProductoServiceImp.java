@@ -91,4 +91,16 @@ public class ProductoServiceImp implements IProductoService {
 		return unProducto;
 	}
 
+	@Override
+	public void eliminarProducto(int cod) {
+		// TODO Auto-generated method stub
+		for (int i=0; i< listaDeProductos.size();i++)
+		{
+			if(listaDeProductos.get(i).getCodProducto() == cod)
+			{
+				listaDeProductos.remove(i);
+			}
+		}
+	}
+
 }
