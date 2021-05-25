@@ -69,4 +69,17 @@ public class ClienteServiceImp implements IClienteService {
 		}	
 	}
 
+	@Override
+	public void eliminarCliente(int id) {
+		// TODO Auto-generated method stub
+		for (int i=0; i< listadoClientes.size();i++)
+		{
+			if(listadoClientes.get(i).getNroDocumento() == id)
+			{
+				listadoClientes.remove(i) ;
+			}
+
+		}	
+	}
+
 }

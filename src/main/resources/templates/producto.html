@@ -107,7 +107,8 @@
 					<td th:text="${producto.stock}"></td>
 					<td th:text="${producto.descripcion}"></td>
 					<td><a href="#" th:href="@{'/producto/editar/'+${producto.codProducto}}"><i class="fa fa-edit"></i></a>
-					<a th:onclick="'javascript:confirmarEliminar(\''+${producto.codProducto}+'\');"><i class="fa fa-trash-alt"></i></a>
+					<a th:onclick="'javascript:confirmarEliminar(\''+${producto.codProducto}+'\');'"
+					><i class="fa fa-trash-alt"></i></a>
 					</td>
 				</tr>
 			</table>
@@ -128,7 +129,7 @@
 						<div class="modal-body">
 							<h6>¿Está seguro que quiere eliminar este producto?</h6>
 						</div>
-						<input type="hidden" id="identificadorProductoHiddenInput"
+						<input type="hidden" id="identificadorProducto"
 							name="productoCodHiddenInput" />
 						<div class="modal-footer">
 							<button type="button" class="btn btn-secondary"
@@ -147,13 +148,13 @@
 	</div>
 
 	<script type="text/javascript">
-	function confirmarEliminar(cod){
-		$('#modoEliminar').modal('show');
-		$("#identificadorProductoHiddenInput").val(cod);
+	function confirmarEliminar(cod) {
+		$('#modalEliminar').modal('show');
+		$("#identificadorProducto").val(cod);
 	}
 	
 	function eliminarProducto(){
-		var cod=$("#identificadorProductoHiddenInput").val();
+		var cod=$("#identificadorProducto").val();
 		window.location = "eliminarProducto/"+cod;
 	}
 	</script>

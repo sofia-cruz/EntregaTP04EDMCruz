@@ -42,8 +42,8 @@ public class ProductoController {
 		return("producto");
 	}
 	
-	@GetMapping("/producto/eliminarProducto/{codProducto}")
-	public String eliminarProducto(Model model, @PathVariable(name="codProducto") int cod) {
+	@GetMapping("/eliminarProducto/{cod}")
+	public String eliminarProducto(Model model, @PathVariable(name="cod") int cod) {
 		try {
 			productoService.eliminarProducto(cod);			
 		}

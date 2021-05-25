@@ -61,5 +61,12 @@ public class ClienteServiceMySQL implements IClienteService{
 		clienteAModificar.setCodigoAreaTelefono(clienteModificado.getCodigoAreaTelefono());
 		clienteAModificar.setNumTelefono(clienteModificado.getNumTelefono());
 		clienteAModificar.setEmail(clienteModificado.getEmail());
+	}
+
+	@Override
+	public void eliminarCliente(int id) throws Exception {
+		// TODO Auto-generated method stub
+		Cliente clienteEliminar = clienteDAO.findById(id).orElseThrow(()->new Exception("El Cliente no fue encontrado"));
+		clienteDAO.delete(clienteEliminar);
 	}	
 }

@@ -18,4 +18,6 @@ public interface IClienteService {
 
 	public void modificarCliente(Cliente clienteModificado) throws Exception;
 
+	public void eliminarCliente(int id) throws Exception;
+
 }

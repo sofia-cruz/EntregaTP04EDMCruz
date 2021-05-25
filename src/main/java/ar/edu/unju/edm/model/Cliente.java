@@ -20,19 +20,8 @@ public class Cliente {
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	@Column
-	private Integer idCliente;
-	
-	@Column
 	private int nroDocumento;
-
-	public Integer getIdCliente() {
-		return idCliente;
-	}
-
-	public void setIdCliente(Integer idCliente) {
-		this.idCliente = idCliente;
-	}
-
+	
 	@Column
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fechaNacimiento;
