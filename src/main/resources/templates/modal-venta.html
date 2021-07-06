@@ -1,11 +1,24 @@
 <!DOCTYPE html>
 <html>
-<div class="modal-header">
+<head>
+<link th:rel="stylesheet" type="text/css"
+	th:href="@{/css/misestilos.css}" />
+<link th:rel="stylesheet" type="text/css"
+	th:href="@{/webjars/bootstrap/4.5.0/css/bootstrap.min.css}">
+<link th:rel="stylesheet"
+	th:href="@{/webjars/font-awesome/5.11.2/css/all.css}" />
+<meta charset="UTF-8">
+
+<title>Comprar</title>
+<link th:rel="icon" th:href="@{/img/producto.jpg}" />
+</head>
+<!--<div class="modal-header">
 	<h5 class="modal-title" id="editarModalTitulo">Vender</h5>
 	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 		<span aria-hidden="true">&times;</span>
 	</button>
-</div>
+</div>  -->
+<body>
 <div class="modal-body">
 <form id="formProducto" th:object="${venta}" th:action="@{/producto/vender}" method="post">
 		<div class="form-group row">
@@ -37,7 +50,8 @@
 			</div>
 		</div>
 		<div class="modal-footer">
-			<button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+			<!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button> -->
+			<a class="btn btn-secondary" th:href="@{/producto/ventas}" role="button">Cancelar</a>
 			<button type="submit" class="btn btn-primary">Confirmar Compra</button>
 		</div>
 
