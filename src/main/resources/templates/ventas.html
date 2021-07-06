@@ -44,22 +44,23 @@
 		<div class="modal fade" id="modalVender" tabindex="-1" role="dialog">
 			<div class="modal-dialog modal-dialog-centered" >
 				<div class="modal-content">
+				
 
 				</div>
 			</div>
 		</div>
 
-<script type="text/javascript">
+		<div th:insert="layouts/footer :: footer"></div>
+	</div>
+	
+	<script type="text/javascript">
 			$(document).ready(function() { $(".link-vender").on("click", function(event) {
 									event.preventDefault();
 									$("#modalVender").modal("show").find(".modal-content").load($(this).attr("href"));
 								});
 					});
 		</script>
-
-
-		<div th:insert="layouts/footer :: footer"></div>
-	</div>
+	
 
 	<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"
 			type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>

@@ -24,11 +24,11 @@ public class Venta {
 	@Column
 	private Integer idVenta;
 	
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name ="idProducto")
 	private Producto producto;
 
-	@ManyToOne(cascade=CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name ="idCliente")
 	private Cliente cliente;
 	@Column
