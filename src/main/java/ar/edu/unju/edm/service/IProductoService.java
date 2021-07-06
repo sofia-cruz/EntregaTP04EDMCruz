@@ -10,6 +10,8 @@ import ar.edu.unju.edm.model.Producto;
 public interface IProductoService {
 
 	public void guardarProducto(Producto unProducto);
+	
+	public Producto obtenerProductoCodigo(Integer idProducto);
 
 	public void modificarProducto(Producto productoAModificar) throws Exception;
 

@@ -24,27 +24,49 @@
 						<img src="/img/producto.jpg" class="card-img-top" alt="producto">
 						<div class="card-body">
 							<div class="card-body">
-								<h5 class="card-title" th:text="${'Producto - ' + p.codProducto}">Id</h5>
+								<h5 class="card-title"
+									th:text="${'Producto - ' + p.codProducto}">Id</h5>
 								<p class="card-text" th:text="${p.nombre}">Nombre</p>
 								<p class="card-text" th:text="${p.precio}">Precio</p>
 								<p class="card-text" th:text="${p.descripcion}">Desc</p>
-								<a class="stretched-link- btn btn-primary"><i class="fa fa-shopping-cartmr"></i>Comprar</a>
-							</div>
+								<a class="stretched-link btn btn-primary link-vender" 
+								th:href="@{'/producto/vender/'+${p.codProducto}}"><i
+								class="fas fa-shopping-cart mr-2"></i> Comprar</a>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 
+		</div>		
+
+		<!--Modal Vender-->
+		<div class="modal fade" id="modalVender" tabindex="-1" role="dialog">
+			<div class="modal-dialog modal-dialog-centered" >
+				<div class="modal-content">
+
+				</div>
+			</div>
+		</div>
+
+<script type="text/javascript">
+			$(document).ready(function() { $(".link-vender").on("click", function(event) {
+									event.preventDefault();
+									$("#modalVender").modal("show").find(".modal-content").load($(this).attr("href"));
+								});
+					});
+		</script>
+
+
 		<div th:insert="layouts/footer :: footer"></div>
 	</div>
 
 	<script th:src="@{/webjars/jquery/3.5.1/jquery.min.js}"
-		type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>
-	<script th:src="@{/webjars/popper.js/1.16.0/popper.min.js}"
-		type="text/javascript" src="webjars/popper.js/1.16.0/popper.min.js"></script>
-	<script th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"
-		type="text/javascript"
-		src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+			type="text/javascript" src="webjars/jquery/3.5.1/jquery.min.js"></script>
+		<script th:src="@{/webjars/popper.js/1.16.0/popper.min.js}"
+			type="text/javascript" src="webjars/popper.js/1.16.0/popper.min.js"></script>
+		<script th:src="@{/webjars/bootstrap/4.5.0/js/bootstrap.min.js}"
+			type="text/javascript"
+			src="webjars/bootstrap/4.5.0/js/bootstrap.min.js"></script>	
 </body>
 </html>
